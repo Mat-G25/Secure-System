@@ -60,7 +60,6 @@ Para clonar e executar o projeto, siga os passos abaixo:
 
 ### 2. Clonagem e Instalação
 
-```bash
 # Clonar o repositório
 git clone [https://github.com/Mat-G25/Secure-System.git](https://github.com/Mat-G25/Secure-System.git)
 cd Secure-System
@@ -72,3 +71,20 @@ npm install
 cd frontend
 npm install
 cd ..
+
+### 3. Configuração do .env
+
+Na raiz do projeto (Secure-System/), crie o arquivo .env e preencha com as credenciais obtidas na sua instância de PostgreSQL/Supabase:Snippet de código# Configurações do Banco de Dados
+DATABASE_URL="postgresql://[USUARIO]:[SENHA]@[HOST]:[PORT]/[DATABASE]"
+
+# Chave Secreta para Assinar Tokens JWT (Obrigatório)
+JWT_SECRET=UMA_CHAVE_COMPLEXA_AQUI
+PORT=3000
+
+### 4. Inicialização
+
+Mantenha dois terminais ativos simultaneamente:AplicaçãoTerminalComandoURL de AcessoBack-endTerminal 1 (Raiz)npm run devhttp://localhost:3000Front-endTerminal 2 (/frontend)npm run devhttp://localhost:51735. Demonstração e TestesAcesse a URL do Front-end (localhost:5173). Utilize a rota /register para criar um novo usuário (cargo padrão: user). Faça login. Clique em "Tentar acessar Área Admin": O sistema exibirá o alerta Vermelho (403 Forbidden), confirmando o sucesso do Middleware RBAC. Promova o usuário no SQL Editor do Supabase (UPDATE users SET role = 'admin' ...) e faça login novamente para confirmar o acesso autorizado (alerta Verde).
+
+### 5. Demonstração e Testes
+
+Acesse a URL do Front-end (localhost:5173). Utilize a rota /register para criar um novo usuário (cargo padrão: user). Faça login. Clique em "Tentar acessar Área Admin": O sistema exibirá o alerta Vermelho (403 Forbidden), confirmando o sucesso do Middleware RBAC. Promova o usuário no SQL Editor do Supabase (UPDATE users SET role = 'admin' ...) e faça login novamente para confirmar o acesso autorizado (alerta Verde).
